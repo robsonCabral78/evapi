@@ -1,7 +1,9 @@
 package com.evapi.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class tipoSolicitacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tipo_solicitacao")
 	private Long id;
 
+	@Column(nullable = false)
 	private String tipoPedido;
 
 	public Long getId() {
@@ -36,5 +39,24 @@ public class tipoSolicitacao implements Serializable {
 	public void setTipoPedido(String tipoPedido) {
 		this.tipoPedido = tipoPedido;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		tipoSolicitacao other = (tipoSolicitacao) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 
 }
