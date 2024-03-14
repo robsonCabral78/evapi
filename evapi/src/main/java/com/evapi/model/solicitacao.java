@@ -62,6 +62,17 @@ public class solicitacao implements Serializable {
 
 	@Column(columnDefinition = "VARCHAR(30) DEFAULT 'Em Aberto'")
 	private String status;
+	
+	@Column(columnDefinition = "text")
+	private String descricao;
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
 
 	public Long getId() {
 		return id;
